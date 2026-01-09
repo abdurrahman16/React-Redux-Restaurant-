@@ -1,36 +1,43 @@
 import MenuItem from './MenuItem.js';
-import { useState } from 'react';
+import { Component } from 'react';
 import DISHES from '../../data/Dishes.js';
 import DishDetail from './DishDetail.js';
 
-const Menu = () => {
-  const [dishes] = useState(DISHES);
-  const [selectedDish, setSelectedDish] = useState(null);
+class Menu extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dishes: DISHES,
+      selectedDish: null
+    };
+  }
 
-  const onSelectDish = (dish) => {
-    setSelectedDish(dish);
+  onSelectDish = (dish) => {
+    this.setState({ selectedDish: dish });
   };
 
-  const menu = dishes.map((dish) => (
-    <MenuItem
-      key={dish.id}
-      dish={dish}
-      onSelectDish={onSelectDish}
-    />
-  ));
+  render() {
+    const menu = this.state.dishes.map((dish) => (
+      <MenuItem
+        key={dish.id}
+        dish={dish}
+        onSelectDish={this.onSelectDish}
+      />
+    ));
 
-  const dishDetail = selectedDish
-    ? <DishDetail dish={selectedDish} />
-    : null;
+    const dishDetail = this.state.selectedDish
+      ? <DishDetail dish={this.state.selectedDish} />
+      : null;
 
-  return (
-    <div className="container">
-      <div className="row">
-        <div className="col-5">{menu}</div>
-        <div className="col-7">{dishDetail}</div>
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-5">{menu}</div>
+          <div className="col-7">{dishDetail}</div>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default Menu;

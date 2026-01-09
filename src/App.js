@@ -5,8 +5,9 @@ import MainComponent from './components/MainComponent';
 function App() {
   return (
     <div className="App">
-      <BrowserRouter></BrowserRouter>
-      <MainComponent />
+      <BrowserRouter><MainComponent />
+      </BrowserRouter>
+      
     </div>
   );
 }

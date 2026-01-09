@@ -43,12 +43,12 @@ const NavigationComponent = () => {
             </NavItem>
             <NavItem>
               <NavLink href="/about">
-                About us
+                About
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/contact">
-                Contact us
+                Contact
               </NavLink>
             </NavItem>
             
