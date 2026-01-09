@@ -1,11 +1,12 @@
-import Menu from "./Menu";
+import React from 'react'
 
 
 const BodyComponent = () => {
   return (
-    <div><Menu/>
+    <div>
 
-    </div>
+
+  </div>
   )
 }
 
