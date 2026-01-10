@@ -1,13 +1,15 @@
-import MenuItem from './MenuItem.js';
 import { Component } from 'react';
+import MenuItem from './MenuItem.js';
 import DISHES from '../../data/Dishes.js';
 import DishDetail from './DishDetail.js';
+import COMMENTS from '../../data/comments.js';
 
 class Menu extends Component {
   constructor(props) {
     super(props);
     this.state = {
       dishes: DISHES,
+      comments: COMMENTS,
       selectedDish: null
     };
   }
@@ -25,9 +27,20 @@ class Menu extends Component {
       />
     ));
 
-    const dishDetail = this.state.selectedDish
-      ? <DishDetail dish={this.state.selectedDish} />
-      : null;
+    let dishDetail = null;
+
+    if (this.state.selectedDish != null) {
+      const comments = this.state.comments.filter(
+        (comment) => comment.dishId === this.state.selectedDish.id
+      );
+
+      dishDetail = (
+        <DishDetail
+          dish={this.state.selectedDish}
+          comments={comments}
+        />
+      );
+    }
 
     return (
       <div className="container">

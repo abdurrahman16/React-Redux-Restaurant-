@@ -1,4 +1,22 @@
-.App {
-  text-align: center;
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.footer {
+  background-color: #222;
+  color: #f1f1f1;
+  text-align: center;
+  padding: 16px;
+  font-size: 14px;
+}

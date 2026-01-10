@@ -2,9 +2,12 @@
 import { Card,CardBody,CardTitle,CardText,CardImg } from 'reactstrap'
 import Menu from './Menu'
 import LoadComments from './LoadComments'
+import COMMENTS from '../../data/comments'
 
 
-const DishDetail =({dish})  => {
+
+const DishDetail =props  => {
+  const dish=props.dish;
   return (
     <div>
 <Card
@@ -68,7 +71,7 @@ const DishDetail =({dish})  => {
       ¥ {dish.price}
     </CardText>
     <hr></hr>
-    <LoadComments comments={dish.comments}/>
+    <LoadComments comments={props.comments}/>
 
     
   </CardBody>
