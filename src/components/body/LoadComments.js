@@ -13,6 +13,7 @@ const LoadComments = ({comments}) => {
           return(  <div key={c.id}> 
         <h5>{c.author}</h5>
         <p>{c.comment}</p>
+        <p> Rating: {c.rating}</p>
     <p>
   {c.date ? dateFormat(new Date(c.date), "dddd, d mmmm yyyy") : "No date"}
 </p>
