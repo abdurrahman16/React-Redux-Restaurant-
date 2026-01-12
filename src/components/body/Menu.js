@@ -1,15 +1,21 @@
 import { Component } from 'react';
 import MenuItem from './MenuItem.js';
-import DISHES from '../../data/Dishes.js';
 import DishDetail from './DishDetail.js';
-import COMMENTS from '../../data/comments.js';
+import { connect } from 'react-redux';
+
+
+const mapStateToProps = (state) => {
+  return {
+    dishes: state.dishes,
+    comments: state.comments
+  }
+}
 
 class Menu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dishes: DISHES,
-      comments: COMMENTS,
+      
       selectedDish: null
     };
   }
@@ -19,7 +25,7 @@ class Menu extends Component {
   };
 
   render() {
-    const menu = this.state.dishes.map((dish) => (
+    const menu = this.props.dishes.map((dish) => (
       <MenuItem
         key={dish.id}
         dish={dish}
@@ -30,7 +36,7 @@ class Menu extends Component {
     let dishDetail = null;
 
     if (this.state.selectedDish != null) {
-      const comments = this.state.comments.filter(
+      const comments = this.props.comments.filter(
         (comment) => comment.dishId === this.state.selectedDish.id
       );
 
@@ -41,7 +47,7 @@ class Menu extends Component {
         />
       );
     }
-
+document.title = "Menu";
     return (
       <div className="container">
         <div className="row">
@@ -53,4 +59,4 @@ class Menu extends Component {
   }
 }
 
-export default Menu;
+export default connect(mapStateToProps) (Menu);

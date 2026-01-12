@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 
 class Contact extends Component {
+  
   constructor(props) {
     super(props);
-
+    
     this.state = {
       firstname: '',
       lastname: '',
@@ -36,6 +37,7 @@ class Contact extends Component {
   }
 
   render() {
+    document.title = "Contact Us";
     return (
       <div className="container">
         <div className="row row-content">
