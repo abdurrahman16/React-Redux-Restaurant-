@@ -2,6 +2,7 @@ import { Component } from 'react';
 import MenuItem from './MenuItem.js';
 import DishDetail from './DishDetail.js';
 import { connect } from 'react-redux';
+import { addComment } from '../../redux/actionCreators.js';
 
 
 const mapStateToProps = (state) => {
@@ -12,17 +13,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addComment: (dishId, author, rating, comment) =>
-    dispatch({
-      type: "ADD_COMMENT",
-      payload: {
-        dishId: dishId,
-        author: author,
-        rating: rating,
-        comment: comment,
-        date: new Date().toISOString(),
-      },
-    }),
+  addComment: (dishId, rating, author, comment) =>
+    dispatch(addComment(dishId, rating, author, comment))
 });
 
 class Menu extends Component {
@@ -74,4 +66,4 @@ document.title = "Menu";
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps) (Menu);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
